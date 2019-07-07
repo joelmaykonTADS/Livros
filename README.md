@@ -181,3 +181,36 @@ Route::middleware('auth:api')->get('/usuario', function (Request $request) {
     return $request->user();
 });
 ```
+## Validação dos dados antes de cadastrar usuário 
+Usamos a validação disponibilizada pelo Laravel
+Link da documentação: https://laravel.com/docs/5.5/validation
+
+Dentro do arquivo no método `/cadastrar-usuario`: 
+```
+routes/
+- api.php`
+```
+```
+    //Validação de dados cadastrais
+    $validacao = Validator::make($data,[
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|max:255|email|unique:users',
+        'password' =>'required|string|min:6|confirmed', 
+    ]);
+    //Retorna os erros que possivelmente ocorrerão caso os requisitos da validação não forem atendidos
+    if($validacao->fails()){
+        return  $validacao->errors();
+    };
+```
+
+É adicionado o campo `password_confirmed` que seria uma repetição da senha(`password`) para passar na validação que pede a comfirmação da senha do usuário na  criação de uma nova conta. 
+### Tradução para português
+Para a respostas dos erros serem em português usamos o seguinte arquivos:
+Repositório: https://github.com/enniosousa/laravel-5.5-pt-BR-localization
+Extraia os arquivos, copiar para `root/resources/lang/pt-br` se não existir o diretório pt-br pode criar.
+configure para usar a tradução: 
+
+```
+// Linha 81 do arquivo config/app.php
+'locale' => 'pt-BR',
+```
