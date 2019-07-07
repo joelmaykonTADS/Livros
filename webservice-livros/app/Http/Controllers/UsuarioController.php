@@ -10,8 +10,8 @@ use Auth as auth;
 
 class UsuarioController extends Controller
 {
-    //Metodo login
-    public function login(Request $request)
+    //Metodo para o usuario fazer login
+    public function Login(Request $request)
     {
         // Dados passado via corpo da requisição
         $data = $request->all();
