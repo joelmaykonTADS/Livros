@@ -26,6 +26,37 @@
 				"description": ""
 			},
 			"response": []
+		},
+		{
+			"name": "localhost:8000/api/post-teste-retorna-dados-form",
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "nome",
+							"value": "Joel",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "localhost:8000/api/post-teste-retorna-dados-form",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"post-teste-retorna-dados-form"
+					]
+				},
+				"description": ""
+			},
+			"response": []
 		}
 	]
 }
