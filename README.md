@@ -1,5 +1,5 @@
 # Livros
-## Projeto para cadastro de livros
+## Projeto básico para cadastro de livros
  * Construção de um serviço web que utiliza métodos HTTP, para servir dados vindo de um banco de dados e expor esses dados para outras aplicações consumirem seguindo uma arquitetura distribuida do tipo REST
  ![Arquitetura REST Exemplo](https://cdn-images-1.medium.com/max/1600/1*MB6Yb2aOpx9r-ItuwXWNWw.jpeg)
 
@@ -61,11 +61,11 @@ Dentro do diretório config no arquivo database.php tem o seguite código que ap
 
 Dentro do diretório database foi criado o arquivo database.sqlite que é o banco de dados [SQLite](https://www.sqlite.org/index.html)
 
-Para poder usar o SQLite é necessário usar o seguinte comando:
+Para instalar o SQLite é necessário usar o seguinte comando:
 `sudo apt-get install php7.0-sqlite
  && sudo apt-get install php-sqlite3`
 
-E deve alterar no php.ini do PHP instalado no seu sistema operacional das linhas 
+Para usar o SQLite  é necessário alterar no php.ini do PHP instalado no seu sistema operacional das linhas abaixo:
 ```
 ;extension=pdo_sqlite
 ;extension=pdo_mysql
@@ -130,7 +130,7 @@ app
 ```
 
 O campo email é atributo único:
-```
+``` 
 database
 - migrations
 -- 2014_10_12_000000_createUsers_table.php
@@ -154,4 +154,5 @@ Criando um Token para acesso aos metodos da API:
 
 ```
 $user->token = $user->createToken($user->email)->accessToken;
-```
+
+O método de cadastro de usuário se encontra na pasta Postman deve-se passa os dados no "body" da requisição usando chave e valor: name:"", email:"" e password:""
