@@ -1,7 +1,74 @@
 # Livros
 ## Projeto para cadastro de livros
- 1. Construção de um serviço web para prover métodos HTTP, para servir dados vindo de um banco de dados e expor esses dados para outras aplicações consumirem seguindo uma arquitetura Rest
+ * Construção de um serviço web que utiliza métodos HTTP, para servir dados vindo de um banco de dados e expor esses dados para outras aplicações consumirem seguindo uma arquitetura Rest
 
 ## Laravel - Versão 5.5
-### Instalação
+### Instalação do Framework
+
 Link da documentação: https://laravel.com/docs/5.5
+
+Foi utilizado o composer para instalação do Laravel
+Link da ferramenta: https://getcomposer.org/doc/00-intro.md
+
+### Criação de um projeto no sistema operacional Debian
+Execute o comando abaixo no passo 1:
+ 1. `composer create-project --prefer-dist laravel/laravel webservice-livros "5.6.*"`
+     * `--prefer-dist laravel/laravel` é o comando para a escolha da distribuição do laravel e a versão é a 5.5
+
+### Configuração do passport (API Authentication) para verificação de autorização e autenticação no Laravel
+
+Link da documentação: https://laravel.com/docs/5.5/passport
+
+Foi utilizado o recurso de [acesso a tokens](https://laravel.com/docs/5.5/passport#personal-access-tokens), que permite que os usuários tenha acesso API e pode servir como uma abordagem mais simples para a emissão de tokens de acesso em geral.
+Para instalação do passport, entre na pasta raiz do webservice criado e execute o comando abaixo no passo 1:
+
+ 1. `composer require laravel/passport "4.0"`
+
+
+### Configuração do banco de dados (SQLite) para laravel
+
+No arquivo .env na raiz do projeto  DB_CONNECTION=mysql e trocar para DB_CONNECTION=sqlite  
+DB_CONNECTION=sqlite
+
+
+Apagar as 3 linhas abaixo:
+DB_HOST=127.0.0.1
+DB_PORT=3306
+DB_DATABASE=homestead
+DB_USERNAME=homestead
+DB_PASSWORD=secret
+
+Dentro do diretório config no arquivo database.php tem o seguite código que aponta para o sqlite
+
+`
+        'sqlite' => [
+            'driver' => 'sqlite',
+            'database' => env('DB_DATABASE', database_path('database.sqlite')),
+            'prefix' => '',
+        ],
+`
+
+Dentro do diretório database foi criado o arquivo database.sqlite
+
+Para poder usar o SQLite é necessário usar o seguinte comando:
+`sudo apt-get install php7.0-sqlite
+ && sudo apt-get install php-sqlite3`
+
+E deve alterar no php.ini do PHP instalado no seu sistema operacional das linhas 
+`;extension=pdo_sqlite`
+`;extension=pdo_mysql`
+`;extension=sqlite3`
+removendo o ";" da frente da linha 
+
+### Execução de migrates no Laravel
+
+Dentro do diretório migrates se encontra arquivos específicos para criação de tabelas e outras atividades relacionadas a manipulaçao de banco de dados.
+
+as principais migrates são para criação da tabela de usuários e tabela resetar senhas que foram criadas automaticamente quando o passport foi instalando usando o composer.
+
+O comando a seguir serve para executar as migrations
+`php artisan migrate -v`
+
+
+
+
