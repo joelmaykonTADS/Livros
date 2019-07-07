@@ -130,6 +130,7 @@ app
 ```
 
 O campo email é atributo único:
+```
 database
 - migrations
 -- 2014_10_12_000000_createUsers_table.php
@@ -145,7 +146,7 @@ database
             $table->timestamps();
         });
     }
-
+```
 
 
 Criando um Token para acesso aos metodos da API:
