@@ -78,15 +78,28 @@ A ferramenta chama-ser Postman
 Link para download: https://www.getpostman.com/downloads/
 ### Rotas da API
 No arquivo routes/api.php
+
+
+Para acessa a rota usando o postman ou um navegador
+usar a seguite URL: http:localhost:8000/api/teste-metodo-api
+Na pasta Postman se encontra um json que pode ser aberto no Postman para execução dos testes de rotas
+
 Exemplo de uma rota de teste GET
 ```
 Route::get('/teste-metodo-api', function(Request $request){
     return "Teste está funcionando";
    });
 ```
-Para acessa a rota usando o postman ou um navegador
-usar a seguite URL: http:localhost:8000/api/teste-metodo-api
-Na pasta 
+
+Exemplo de uma rota de teste POST
+
+```
+// Retornando todos os dados passado via corpo da requisição
+Route::post('/post-teste-retorna-dados-form', function (Request $request) {
+    return $request->all();
+});
+No caso de um teste do metodo anterior que é do tipo POST, Usando o Postman deve-se passa os dados no "body" da requisição de forma chave e valor
+```
 
 
 
