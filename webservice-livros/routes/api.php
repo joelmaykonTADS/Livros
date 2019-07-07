@@ -15,7 +15,9 @@ use Illuminate\Support\Facades\Hash;
 |             ____________Padrão_____________
 | Todos os novos métodos são criados acima dos mais antigos.
  */
-
+Route::middleware('auth:api')->get('/usuario', function (Request $request) {
+    return $request->user();
+});
 Route::post('/cadastrar-usuario', function (Request $request) {
     $data = $request->all();
     $user = User::create([

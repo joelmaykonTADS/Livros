@@ -117,7 +117,7 @@ No caso de um teste do metodo anterior que é do tipo POST, Usando o Postman dev
 
 ## Cadastro de Usuários
 
-Criação de uma rota  em:
+### Criação de uma rota  em:
 ```
 routes/
 - api.php
@@ -149,7 +149,7 @@ database
 ```
 
 
-Criando um Token para acesso aos metodos da API:
+### Criando um Token para acesso aos metodos da API:
 
 É utilizado o email do usuário para criar o token e armazena no atributo token da classe User(Usuário)
 
@@ -157,3 +157,27 @@ Criando um Token para acesso aos metodos da API:
 $user->token = $user->createToken($user->email)->accessToken;
 ```
 O método de cadastro de usuário se encontra na pasta Postman deve-se passa os dados no "body" da requisição usando chave e valor: name:"", email:"" e password:""
+
+
+## Autenticação de Usuarios
+
+Usamos autenticação que já é disponibilizada pelo Laravel:
+Link da documentação: https://laravel.com/docs/5.5/authentication
+
+### Criação de uma rota  em:
+O método é o `/usuario` 
+```
+routes/
+- api.php
+```
+Ao acessar a rota passar os seguites dados no cabeçalho(Headers) da requisição:
+```
+"Autorization": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6IjcwM2NkZjIzMjhmMzIwZjNlNDExNTQyNTBmM2I2ZDM5MTJmYTYxMjc2NTU1Yjc2ZTYxOTc4NjhlYjdiZjAyOTYwZjM3ZDdkYWNkZDYxMTdjIn0.eyJhdWQiOiIxIiwianRpIjoiNzAzY2RmMjMyOGYzMjBmM2U0MTE1NDI1MGYzYjZkMzkxMmZhNjEyNzY1NTViNzZlNjE5Nzg2OGViN2JmMDI5NjBmMzdkN2RhY2RkNjExN2MiLCJpYXQiOjE1NjI1MDg4OTIsIm5iZiI6MTU2MjUwODg5MiwiZXhwIjoxNTk0MTMxMjkyLCJzdWIiOiI4Iiwic2NvcGVzIjpbXX0.OIPEunPVx0D9JF_N-vJB2xWd58qKjdGRmnKtDxj0KQfqST63Igt2zocAaMNEcKA7rFzDO8AYqDHjRavNB2GpD4Hx_K1m6kRaDpxbSlZkivqAw7-gQkARouyYC-cmX6LY-6EV03zpNmA70HyCM9kOOLXbPRoqIX5fOFKYR0iHvClS4JkyWkjemYguESddXY-6d3XaayJ4V1f3twOVhHJl_GJEnlhyHaoVPdr6--dpXNDn92bVRTRq8uctXyVj8Hcp-KAhvAikOFgcse9ZqJGPqzQfylEjGvHm5qRBmC4xgvRWfh_dvdxvyYowQ8rM9hDqfT5f59ZIJX7yvVKYrGgzzWCEnyN975ghc0DlHH1wZtHwC8dDZMPrunKuqdMmmyRLJAK7l4uwpaLaVM7r9IuYImWuBokLmGaZKHFU84bt5su6QCHlS6IuzrT7nsapKhROh6qP8mwoiHYJS9FRnyH70BgKNhxQIldrF1p22ywPVBlc8eZ9blH04JBrQUOaqLhz612t_MZqSM5DDTzAH9MLhBlqtdP4WBqLFicfr8zvwHVBJwj-K4oKVwQvGMpIdW7omAZAeeZBeXwVjqB4oOuSji5-2ZuGdwXhbaPRlQFrGL-rOg2BgbpjQdjqMBxMKbokp1mJof4y8Ar50emsPvpRa7c-BUnpMEDQ8KRdjkZwx-w"
+
+```
+
+```
+Route::middleware('auth:api')->get('/usuario', function (Request $request) {
+    return $request->user();
+});
+```
