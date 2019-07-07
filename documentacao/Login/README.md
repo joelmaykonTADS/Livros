@@ -24,3 +24,22 @@ Se entrar no teste é poque o usuário teve suas credencias verificadas e autent
         return ['status' => false, 'msg' => "Não autorizado"];
     } 
 ```
+
+### Criação de Cotrollers
+
+Isolando implementação do login em um controlador
+
+comando para gerar controlador: `php artisan make:controller LoginController`
+Lógica do método de login transferida para o controlador
+```
+app
+-Http
+--Controllers
+---Usuariocontroller.php
+```
+```
+routes
+-api.php
+//rota para o controlador e acesso ao método login
+Route::post('/login-usuario',"UsuarioController@login");
+```
