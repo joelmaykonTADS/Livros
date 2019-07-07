@@ -3,6 +3,7 @@
 use App\User;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
+use Illuminate\Support\Facades\Validator;
 
 /*
 |--------------------------------------------------------------------------
@@ -15,11 +16,26 @@ use Illuminate\Support\Facades\Hash;
 |             ____________Padrão_____________
 | Todos os novos métodos são criados acima dos mais antigos.
  */
+
 Route::middleware('auth:api')->get('/usuario', function (Request $request) {
     return $request->user();
 });
+
 Route::post('/cadastrar-usuario', function (Request $request) {
+    // Dados passado pela reuisição via corpo
     $data = $request->all();
+
+    //Validação de dados cadastrais
+    $validacao = Validator::make($data,[
+        'name' => 'required|string|max:255',
+        'email' => 'required|string|max:255|email|unique:users',
+        'password' =>'required|string|min:6|confirmed', 
+    ]);
+    //Retorna os erros que possivelmente ocorrerão caso os requisitos da validação não forem atendidos
+    if($validacao->fails()){
+        return  $validacao->errors();
+    };
+
     $user = User::create([
         'name' => $data['name'],
         'email' => $data['email'],
