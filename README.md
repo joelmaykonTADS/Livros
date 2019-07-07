@@ -1,7 +1,7 @@
 # Livros
 ## Projeto para cadastro de livros
  * Construção de um serviço web que utiliza métodos HTTP, para servir dados vindo de um banco de dados e expor esses dados para outras aplicações consumirem seguindo uma arquitetura distribuida do tipo REST
- ![Arquitetura REST Exemplo](https://www.researchgate.net/profile/Bruno_Bogaz_Zarpelao/publication/262731775/figure/fig1/AS:392450288963584@1470578848159/Figura-1-Arquitetura-baseada-em-REST-para-cidades-inteligentes.png)
+ ![Arquitetura REST Exemplo](https://cdn-images-1.medium.com/max/1600/1*MB6Yb2aOpx9r-ItuwXWNWw.jpeg)
 
 ## Laravel - Versão 5.5
 ### Instalação do Framework
