@@ -1,0 +1,31 @@
+{
+	"info": {
+		"name": "Livros Github",
+		"_postman_id": "10bcfaf4-4d42-4774-b1a8-d03584f2d055",
+		"description": "Metodos de acesso a api Livros ",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "localhost:8000/api/teste-metodo-api",
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {},
+				"url": {
+					"raw": "localhost:8000/api/teste-metodo-api",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"teste-metodo-api"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		}
+	]
+}
