@@ -150,9 +150,10 @@ database
 
 
 Criando um Token para acesso aos metodos da API:
+
 É utilizado o email do usuário para criar o token e armazena no atributo token da classe User(Usuário)
 
 ```
 $user->token = $user->createToken($user->email)->accessToken;
-
+```
 O método de cadastro de usuário se encontra na pasta Postman deve-se passa os dados no "body" da requisição usando chave e valor: name:"", email:"" e password:""
