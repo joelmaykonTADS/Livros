@@ -4,10 +4,11 @@ namespace App;
 
 use Illuminate\Notifications\Notifiable;
 use Illuminate\Foundation\Auth\User as Authenticatable;
+Use Laravel\Passport\HasAPiTokens;
 
 class User extends Authenticatable
 {
-    use Notifiable;
+    use HasAPiTokens, Notifiable;
 
     /**
      * The attributes that are mass assignable.
