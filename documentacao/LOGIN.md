@@ -1,5 +1,5 @@
 # Login na API
-
+importar o `use Auth;`
 Implementação do metodo HTTP/POST onde as informações são `email` e  `password` com algumas validações como requerido  o email e senha para concluir o login entre outras validações.
 ```
     //Validação de dados do login
