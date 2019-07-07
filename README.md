@@ -217,3 +217,11 @@ configure para usar a tradução:
 // Linha 81 do arquivo config/app.php
 'locale' => 'pt-br',
 ```
+
+## Biblioteca do CORS no Laravel
+Repositório: https://github.com/barryvdh/laravel-cors
+### Instalação
+no arquivo `config/app.php` adicione `Barryvdh\Cors\ServiceProvider::class,`
+no arquivo `app/Http/Kernel.php` adicione no `protected $middlewareGroups` adicione `\Barryvdh\Cors\HandleCors::class,`
+Execute o comando `composer require barryvdh/laravel-cors`
+Execute o comando `php artisan vendor:publish --provider="Barryvdh\Cors\ServiceProvider"`
