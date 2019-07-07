@@ -23,8 +23,14 @@ Link da documentação: https://laravel.com/docs/5.5/passport
 Foi utilizado o recurso de [acesso a tokens](https://laravel.com/docs/5.5/passport#personal-access-tokens), que permite que os usuários tenha acesso API e pode servir como uma abordagem mais simples para a emissão de tokens de acesso em geral.
 
 Para instalação do passport, entre na pasta raiz do webservice criado e execute o comando abaixo:
-
- * `composer require laravel/passport "4.0"`
+ ```
+ composer require laravel/passport
+ ```
+Registrar o seriviço do passaport no arquivo `config/app.php` na área `Application Service Providers...`
+ ```
+ Laravel\Passport\PassportServiceProvider::class,
+ ```
+Rodar o comando `php artisan passport:install` para gerar as chaves criptografadas do passport
 
 
 ### Configuração do banco de dados (SQLite) para laravel
@@ -53,7 +59,7 @@ Dentro do diretório config no arquivo database.php tem o seguite código que ap
         ],
 ```
 
-Dentro do diretório database foi criado o arquivo database.sqlite
+Dentro do diretório database foi criado o arquivo database.sqlite que é o banco de dados [SQLite](https://www.sqlite.org/index.html)
 
 Para poder usar o SQLite é necessário usar o seguinte comando:
 `sudo apt-get install php7.0-sqlite
@@ -106,8 +112,45 @@ Route::post('/post-teste-retorna-dados-form', function (Request $request) {
     return $request->all();
 });
 ```
-No caso de um teste do metodo anterior que é do tipo POST, Usando o Postman deve-se passa os dados no "body" da requisição de forma chave e valor
+No caso de um teste do metodo anterior que é do tipo POST, Usando o Postman deve-se passa os dados no "body" da requisição usando chave e valor
+
+
+## Cadastro de Usuários
+
+Criação de uma rota  em:
+```
+routes/
+- api.php
+```
+O método `/cadastrar-usuario` utiliza a classe User como modelo, o eloquent para manipular ações de CRUD usando o metódo `create` e o [bcrypt](https://laravel.com/docs/5.0/hashing) do laravel para criptografar a senha, é passado três chaves(name, email e password) via requisição HTTP/POST que são respctivamente os três atributos da classe User:
+
+```
+app
+- User.php
+```
+
+O campo email é atributo único:
+database
+- migrations
+-- 2014_10_12_000000_createUsers_table.php
+
+    public function up()
+    {
+        Schema::create('users', function (Blueprint $table) {
+            $table->increments('id');
+            $table->string('name');
+            $table->string('email')->unique();
+            $table->string('password');
+            $table->rememberToken();
+            $table->timestamps();
+        });
+    }
 
 
 
+Criando um Token para acesso aos metodos da API:
+É utilizado o email do usuário para criar o token e armazena no atributo token da classe User(Usuário)
 
+```
+$user->token = $user->createToken($user->email)->accessToken;
+```
