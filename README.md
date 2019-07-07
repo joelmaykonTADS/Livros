@@ -69,6 +69,24 @@ as principais migrates são para criação da tabela de usuários e tabela reset
 O comando a seguir serve para executar as migrations
 `php artisan migrate -v`
 
+### Execução da aplicação localmente
+
+Utiliza-se o comnado a seguir:
+` php artisan serve`
+### Ferramenta para testar as rotas da API
+A ferramenta chama-ser Postman 
+Link para download: https://www.getpostman.com/downloads/
+### Rotas da API
+No arquivo routes/api.php
+Exemplo de uma rota de teste GET
+```
+Route::get('/teste-metodo-api', function(Request $request){
+    return "Teste está funcionando";
+   });
+```
+Para acessa a rota usando o postman ou um navegador
+usar a seguite URL: http:localhost:8000/api/teste-metodo-api
+Na pasta 
 
 
 
