@@ -68,19 +68,25 @@
 					"formdata": [
 						{
 							"key": "name",
-							"value": "",
+							"value": "victor",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "email",
-							"value": "beto5@email.com",
+							"value": "victor@email.com",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "123",
+							"value": "123456",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "password_confirmation",
+							"value": "123456",
 							"description": "",
 							"type": "text"
 						}
@@ -137,13 +143,13 @@
 					"formdata": [
 						{
 							"key": "email",
-							"value": "joel@email.com",
+							"value": "victor@email.com",
 							"description": "",
 							"type": "text"
 						},
 						{
 							"key": "password",
-							"value": "123",
+							"value": "123456",
 							"description": "",
 							"type": "text"
 						}
@@ -158,6 +164,56 @@
 					"path": [
 						"api",
 						"login-usuario"
+					]
+				},
+				"description": ""
+			},
+			"response": []
+		},
+		{
+			"name": "http://localhost:8000/api/criar/livro",
+			"request": {
+				"method": "POST",
+				"header": [
+					{
+						"key": "authorization",
+						"value": "Bearer eyJ0eXAiOiJKV1QiLCJhbGciOiJSUzI1NiIsImp0aSI6ImMxYWQ5MjY1ZDVlYzQzNTA0ZTk5MDNjNTU4MDdjZWZlNmYyNDUwM2JmODBhYWZjNjMwMzQwNDMxOGQ1Zjc1NDhiZDIxOTk3MTM4MDUyMGYwIn0.eyJhdWQiOiIxIiwianRpIjoiYzFhZDkyNjVkNWVjNDM1MDRlOTkwM2M1NTgwN2NlZmU2ZjI0NTAzYmY4MGFhZmM2MzAzNDA0MzE4ZDVmNzU0OGJkMjE5OTcxMzgwNTIwZjAiLCJpYXQiOjE1NjI1NTI5MTAsIm5iZiI6MTU2MjU1MjkxMCwiZXhwIjoxNTk0MTc1MzEwLCJzdWIiOiIyIiwic2NvcGVzIjpbXX0.Rat5OpXqu7DgBMf12ods49v8ufoKkCv8Nz_4wYVejaJxs3VkXozgx9fmF1SDBdEo596DHpOwu4p0P4_r4uBj2NKKgrwzklKJUjVTOnsX5gQGxcZRsKsyF4HeMhe08cCogj_X-6cJcY1KbvpkwU1ww5cwyBkT2BPta9wKsz8gWiHoY2W_fjtRgMPVJkfjDgV2xzWzX84FdSsTYvKfLapZZDBRQTiwkqb9dQRpMJYoIdoW1f9SqljtxpOtOW5y6UaD6Ugn7Cgtj7aKk5YAuwd1gxGuuEYLj6gjFlMWgSyxSF10Nm3YxsKdQv8dXvo-eID5SCeAlpenLYoVYuoYxu3NsnIoc_b-ifsl5kLSK6QInGlj9EXCXn3nPmD56QnJD1MlYFhPAnw4jROEuuSw_8gs_sn4ytUF76UsiW1_m4xZL4wwc7dTxtuRKbtYoeM2z2NBm20FPK3GOOk8M0xCmkTQ-qkJn6IyQWXhiknku6cqy5Nnqh1iZiikHOzHlNjFv__EWoz6CweNmnMpRWZcWA3tZw0YcpyPcKfdsSysLsdkPykTXtp_nMqoYDuT0PjX7qofJb_mfJMzyCQIWDjfPakGSNMTM_uXuULFPMnMJac1Jpf1cfxtnerltLb4S5HaVh_89xyY-s3yto0bCf460NVGSSb9is1Oyw_G4p_fG_gDb2g"
+					}
+				],
+				"body": {
+					"mode": "formdata",
+					"formdata": [
+						{
+							"key": "texto",
+							"value": "Livro PHP Ninja",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "imagem",
+							"value": "imagem3.jpg",
+							"description": "",
+							"type": "text"
+						},
+						{
+							"key": "link",
+							"value": "www.php.com",
+							"description": "",
+							"type": "text"
+						}
+					]
+				},
+				"url": {
+					"raw": "http://localhost:8000/api/criar/livro",
+					"protocol": "http",
+					"host": [
+						"localhost"
+					],
+					"port": "8000",
+					"path": [
+						"api",
+						"criar",
+						"livro"
 					]
 				},
 				"description": ""
