@@ -126,7 +126,7 @@ No caso de um teste do metodo anterior que é do tipo POST, Usando o Postman dev
 routes/
 - api.php
 ```
-O método `/cadastrar-usuario` utiliza a classe User como modelo, o eloquent para manipular ações de CRUD usando o metódo `create` e o [bcrypt](https://laravel.com/docs/5.0/hashing) do laravel para criptografar a senha, é passado três chaves(name, email e password) via requisição HTTP/POST que são respctivamente os três atributos da classe User:
+O método `/cadastrar-usuario` utiliza a classe User como modelo, o eloquent para manipular ações de CRUD usando o metódo `create` e o [Hash::make](https://laravel.com/docs/5.0/hashing) do laravel para criptografar a senha, é passado três chaves(name, email e password) via requisição HTTP/POST que são respctivamente os três atributos da classe User:
 
 ```
 app
@@ -223,6 +223,9 @@ configure para usar a tradução:
 Repositório: https://github.com/barryvdh/laravel-cors
 ### Instalação
 no arquivo `config/app.php` adicione `Barryvdh\Cors\ServiceProvider::class,`
+
 no arquivo `app/Http/Kernel.php` adicione no `protected $middlewareGroups` adicione `\Barryvdh\Cors\HandleCors::class,`
+
 Execute o comando `composer require barryvdh/laravel-cors`
+
 Execute o comando `php artisan vendor:publish --provider="Barryvdh\Cors\ServiceProvider"`
