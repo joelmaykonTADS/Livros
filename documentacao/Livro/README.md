@@ -8,16 +8,16 @@
 ![livro](https://cdn.shopify.com/s/files/1/0155/7645/products/laravel-featured_large.png?v=1432129716)
 
 
-
+```
 Livro
-    id
+    id          integer
     user_id     integer unsigned
     titulo      string
     texto       string
     imagem      string
     link_livro  string
     data        dateTime
-
+```
 
 #### Criando Modelos e Migrações:
 
