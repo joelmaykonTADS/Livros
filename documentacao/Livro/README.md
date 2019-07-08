@@ -1,6 +1,6 @@
-# CRUD Livro
+# CRIAR Livro
 
-## Planejamento do banco de dados com base no negócio
+## Planejamento do banco de dados
 
 
 
