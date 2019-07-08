@@ -2,35 +2,61 @@
 
 namespace App\Http\Controllers;
 
-use Illuminate\Http\Request;
 use App\User;
-use Illuminate\Support\Facades\Hash;
+use Auth;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
-use Auth as auth;
+use Illuminate\Support\Facades\Hash;
 
 class UsuarioController extends Controller
 {
-    //Metodo para o usuario fazer login
-    public function Login(Request $request)
+    public function login(Request $request)
     {
-        // Dados passado via corpo da requisição
         $data = $request->all();
 
-        //Validação de dados do login
-        $validacao = Validator::make($data, [
-            'email' => 'required|string|max:255|email',
+        $valiacao = Validator::make($data, [
+            'email' => 'required|string|email|max:255',
             'password' => 'required|string',
         ]);
-        //Retorna os erros que possivelmente ocorrerão caso os requisitos da validação não forem atendidos
-        if ($validacao->fails()) {
-            return $validacao->errors();
-        };
+
+        if ($valiacao->fails()) {
+            return ['status' => false, "validacao" => true, "erros" => $valiacao->errors()];
+        }
+
         if (Auth::attempt(['email' => $data['email'], 'password' => $data['password']])) {
             $user = auth()->user();
             $user->token = $user->createToken($user->email)->accessToken;
-            return $user;
+            //$user->imagem = asset($user->imagem);
+            return ['status' => true, "usuario" => $user];
         } else {
-            return ['status' => false, 'msg' => "Não autorizado"];
+            return ['status' => false];
         }
+    }
+
+    public function cadastro(Request $request)
+    {
+        $data = $request->all();
+
+        $valiacao = Validator::make($data, [
+            'name' => 'required|string|max:255',
+            'email' => 'required|string|email|max:255|unique:users',
+            'password' => 'required|string|min:6|confirmed',
+        ]);
+
+        if ($valiacao->fails()) {
+            return ['status' => false, "validacao" => true, "erros" => $valiacao->errors()];
+        }
+        $imagem = "/perfils/padrao.jpg";
+
+        $user = User::create([
+            'name' => $data['name'],
+            'email' => $data['email'],
+            'password' => Hash::make($data['password']),
+            'imagem' => $imagem,
+        ]);
+        $user->token = $user->createToken($user->email)->accessToken;
+        //$user->imagem = asset($user->imagem);
+
+        return ['status' => true, "usuario" => $user];
     }
 }
