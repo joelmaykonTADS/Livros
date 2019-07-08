@@ -1,7 +1,8 @@
 # Livros
 ## Documentação do sistema
  * [Login](https://github.com/joelmaykonTADS/Livros/blob/master/documentacao/Login/README.md)
- * [Cadatrar-Usuario](https://github.com/joelmaykonTADS/Livros/tree/master/documentacao/Cadastro%20%20de%20Usuario/README.md)
+ * [Cadatrar Usuario](https://github.com/joelmaykonTADS/Livros/tree/master/documentacao/Cadastro%20%20de%20Usuario/README.md)
+ * [CRUD Livro]()
 ### Projeto básico para cadastro de livros
  * Construção de um serviço web que utiliza métodos HTTP, para servir dados vindo de um banco de dados e expor esses dados para outras aplicações consumirem seguindo uma arquitetura distribuida do tipo REST
  ![Arquitetura REST Exemplo](https://cdn-images-1.medium.com/max/1600/1*MB6Yb2aOpx9r-ItuwXWNWw.jpeg)
@@ -206,7 +207,7 @@ routes/
     };
 ```
 
-É adicionado o campo `password_confirmed` que seria uma repetição da senha(`password`) para passar na validação que pede a comfirmação da senha do usuário na  criação de uma nova conta. 
+É adicionado o campo `password_confirmation` que seria uma repetição da senha(`password`) para passar na validação que pede a comfirmação da senha do usuário na  criação de uma nova conta. 
 ### Tradução para português
 Para a respostas dos erros serem em português usamos o seguinte arquivos:
 Repositório: https://github.com/enniosousa/laravel-5.5-pt-BR-localization
