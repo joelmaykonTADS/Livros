@@ -13,6 +13,7 @@
 Link da documentação: https://laravel.com/docs/5.5
 
 Foi utilizado o composer para instalação do Laravel
+
 Link da ferramenta: https://getcomposer.org/doc/00-intro.md
 
 ### Criação de um projeto no sistema operacional Debian
@@ -98,7 +99,7 @@ No arquivo routes/api.php
 
 
 Para acessa a rota usando o postman ou um navegador
-usar a seguite URL: http:localhost:8000/api/teste-metodo-api
+usar a seguinte URL: http:localhost:8000/api/teste-metodo-api
 Na pasta Postman se encontra um json que pode ser aberto no Postman para execução dos testes de rotas
 
 Exemplo de uma rota de teste GET
