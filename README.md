@@ -209,10 +209,12 @@ routes/
 
 É adicionado o campo `password_confirmation` que seria uma repetição da senha(`password`) para passar na validação que pede a comfirmação da senha do usuário na  criação de uma nova conta. 
 ### Tradução para português
-Para a respostas dos erros serem em português usamos o seguinte arquivos:
+
 Repositório: https://github.com/enniosousa/laravel-5.5-pt-BR-localization
+
 Extraia os arquivos, copiar para `root/resources/lang/pt-br` se não existir o diretório pt-br pode criar.
-configure para usar a tradução: 
+
+Configuração para usar a tradução: 
 
 ```
 // Linha 81 do arquivo config/app.php
