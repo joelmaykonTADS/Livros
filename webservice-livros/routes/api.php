@@ -13,18 +13,31 @@ use Auth as auth;
 | Here is where you can register API routes for your application. These
 | routes are loaded by the RouteServiceProvider within a group which
 | is assigned the "api" middleware group. Enjoy building your API!
-|             ____________Padrão_____________
-| Todos os novos métodos são criados acima dos mais antigos.
+|         
+|
  */
 
+/**
+ * ---------------------------------------------------------
+ *  MÉTODOS USANDO A CAMADA DE CONTROLLERS
+ * ---------------------------------------------------------
+ */
+
+Route::middleware('auth:api')->post('/criar/livro',"LivroController@criarLivro");
 Route::post('/login-usuario',"UsuarioController@login");
+Route::post('/cadastrar-usuario',"UsuarioController@cadastro");
 
-Route::middleware('auth:api')->get('/usuario', function (Request $request) {
-    return $request->user();
+
+/*
+|-----------------------------------------------------------
+|   MÉTODOS  PARA TESTES INICIAIS NA API
+|-----------------------------------------------------------
+*/
+// testando se retorna um usuario pelo id
+Route::get('/teste-usuario-id',function(){
+    $user = User::find(1);
+    return $user;
 });
-
-Route::post('/cadastrar-usuario','CadastroUsuarioController@CadastrarUsuario');
-
 Route::get('/teste-metodo-api', function (Request $request) {
     return "Teste está funcionando";
 });
@@ -33,5 +46,8 @@ Route::post('/post-teste-retorna-dados-form', function (Request $request) {
     return $request->all();
 });
 Route::middleware('auth:api')->get('/user', function (Request $request) {
+    return $request->user();
+});
+Route::middleware('auth:api')->get('/usuario', function (Request $request) {
     return $request->user();
 });
